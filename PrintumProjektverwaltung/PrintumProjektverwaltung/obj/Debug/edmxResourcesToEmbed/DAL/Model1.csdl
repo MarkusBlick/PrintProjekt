@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrintumProjekteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PrintumProjekteEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dateien" EntityType="PrintumProjekteModel.Dateien" />
+    <EntitySet Name="Mails" EntityType="PrintumProjekteModel.Mails" />
+    <EntitySet Name="Ordner" EntityType="PrintumProjekteModel.Ordner" />
+    <EntitySet Name="Personen" EntityType="PrintumProjekteModel.Personen" />
+    <EntitySet Name="Projekte" EntityType="PrintumProjekteModel.Projekte" />
+    <EntitySet Name="Adressen" EntityType="PrintumProjekteModel.Adressen" />
+    <EntitySet Name="Bestellungen" EntityType="PrintumProjekteModel.Bestellungen" />
+    <EntitySet Name="BestellungPositionen" EntityType="PrintumProjekteModel.BestellungPositionen" />
+  </EntityContainer>
+  <EntityType Name="Dateien">
+    <Key>
+      <PropertyRef Name="Datei_ID" />
+    </Key>
+    <Property Name="Datei_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pfad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Typ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Schlagworte" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="erstellt" Type="DateTime" Precision="3" />
+    <Property Name="geaendert" Type="DateTime" Precision="3" />
+    <Property Name="erstelltVon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="geaendertVon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Projektnummer" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Mails">
+    <Key>
+      <PropertyRef Name="Mail_ID" />
+    </Key>
+    <Property Name="Mail_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Projektnummer" Type="Int32" />
+    <Property Name="von" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="an" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Betreff" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AnhangJSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Speicherort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Datum" Type="DateTime" Precision="3" />
+    <Property Name="Schlagworte" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Ordner">
+    <Key>
+      <PropertyRef Name="Ordner_ID" />
+    </Key>
+    <Property Name="Ordner_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Projektnummer" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pfad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Unterordner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Root" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hatDateien" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Personen">
+    <Key>
+      <PropertyRef Name="Person_ID" />
+    </Key>
+    <Property Name="Person_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Vorname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Nachname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Anmeldename" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Rechte" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Projekte">
+    <Key>
+      <PropertyRef Name="Projektnummer" />
+    </Key>
+    <Property Name="Projektnummer" Type="Int32" Nullable="false" />
+    <Property Name="Projektname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrdnersturkturJSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BestellungenJSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MailsJSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Projektbeginn" Type="DateTime" Precision="3" />
+    <Property Name="Produktionsbeginn" Type="DateTime" Precision="3" />
+    <Property Name="Inbetriebname" Type="DateTime" Precision="3" />
+    <Property Name="aktiv" Type="Boolean" Nullable="false" />
+    <Property Name="RootOrdner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Adressen">
+    <Key>
+      <PropertyRef Name="AdressID" />
+    </Key>
+    <Property Name="AdressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Strasse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PLZ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Land" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ZuHaendenVon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Firmenname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email1Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email2Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PLZundORT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Matchcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="JobTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FileAs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="businessHomePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Categories" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Bestellungen">
+    <Key>
+      <PropertyRef Name="Bestellung_ID" />
+    </Key>
+    <Property Name="Bestellung_ID" Type="Int32" Nullable="false" />
+    <Property Name="BestellungIDText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Projektnummer" Type="Int32" />
+    <Property Name="Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Speicherort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Vorlage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Datum" Type="DateTime" Precision="3" />
+    <Property Name="ErstelltVon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GeaendertVon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="geaendert" Type="DateTime" Precision="3" />
+    <Property Name="PDFpfad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="istAbgeschickt" Type="Boolean" />
+    <Property Name="AdressID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAdresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AB" Type="Boolean" />
+    <Property Name="WA" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="BestellungPositionen">
+    <Key>
+      <PropertyRef Name="BestellPos_ID" />
+    </Key>
+    <Property Name="BestellPos_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Projektnummer" Type="Int32" />
+    <Property Name="BestellnungIDTest" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pos" Type="Int32" />
+    <Property Name="Stueck" Type="Int32" />
+    <Property Name="Artikelbezeichnung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Liefertermin" Type="DateTime" Precision="3" />
+    <Property Name="Einzelpreis" Type="Double" />
+    <Property Name="Gesammtpreis" Type="Double" />
+    <Property Name="Besteller" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Bestelldatum" Type="DateTime" Precision="3" />
+    <Property Name="AB_datum" Type="DateTime" Precision="3" />
+    <Property Name="ABestaetiger" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WE_datum" Type="DateTime" Precision="3" />
+    <Property Name="WEingaenger" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

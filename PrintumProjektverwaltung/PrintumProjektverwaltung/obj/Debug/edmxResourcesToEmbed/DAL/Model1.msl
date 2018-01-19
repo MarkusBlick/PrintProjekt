@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrintumProjekteModelStoreContainer" CdmEntityContainer="PrintumProjekteEntities">
+    <EntitySetMapping Name="Dateien">
+      <EntityTypeMapping TypeName="PrintumProjekteModel.Dateien">
+        <MappingFragment StoreEntitySet="Dateien">
+          <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+          <ScalarProperty Name="geaendertVon" ColumnName="geaendertVon" />
+          <ScalarProperty Name="erstelltVon" ColumnName="erstelltVon" />
+          <ScalarProperty Name="geaendert" ColumnName="geaendert" />
+          <ScalarProperty Name="erstellt" ColumnName="erstellt" />
+          <ScalarProperty Name="Schlagworte" ColumnName="Schlagworte" />
+          <ScalarProperty Name="Typ" ColumnName="Typ" />
+          <ScalarProperty Name="Pfad" ColumnName="Pfad" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Datei_ID" ColumnName="Datei_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mails">
+      <EntityTypeMapping TypeName="PrintumProjekteModel.Mails">
+        <MappingFragment StoreEntitySet="Mails">
+          <ScalarProperty Name="Schlagworte" ColumnName="Schlagworte" />
+          <ScalarProperty Name="Datum" ColumnName="Datum" />
+          <ScalarProperty Name="Speicherort" ColumnName="Speicherort" />
+          <ScalarProperty Name="AnhangJSON" ColumnName="AnhangJSON" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Betreff" ColumnName="Betreff" />
+          <ScalarProperty Name="an" ColumnName="an" />
+          <ScalarProperty Name="von" ColumnName="von" />
+          <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+          <ScalarProperty Name="Mail_ID" ColumnName="Mail_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ordner">
+      <EntityTypeMapping TypeName="PrintumProjekteModel.Ordner">
+        <MappingFragment StoreEntitySet="Ordner">
+          <ScalarProperty Name="hatDateien" ColumnName="hatDateien" />
+          <ScalarProperty Name="Root" ColumnName="Root" />
+          <ScalarProperty Name="Unterordner" ColumnName="Unterordner" />
+          <ScalarProperty Name="Pfad" ColumnName="Pfad" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+          <ScalarProperty Name="Ordner_ID" ColumnName="Ordner_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personen">
+      <EntityTypeMapping TypeName="PrintumProjekteModel.Personen">
+        <MappingFragment StoreEntitySet="Personen">
+          <ScalarProperty Name="Rechte" ColumnName="Rechte" />
+          <ScalarProperty Name="Anmeldename" ColumnName="Anmeldename" />
+          <ScalarProperty Name="Nachname" ColumnName="Nachname" />
+          <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+          <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projekte">
+      <EntityTypeMapping TypeName="PrintumProjekteModel.Projekte">
+        <MappingFragment StoreEntitySet="Projekte">
+          <ScalarProperty Name="RootOrdner" ColumnName="RootOrdner" />
+          <ScalarProperty Name="aktiv" ColumnName="aktiv" />
+          <ScalarProperty Name="Inbetriebname" ColumnName="Inbetriebname" />
+          <ScalarProperty Name="Produktionsbeginn" ColumnName="Produktionsbeginn" />
+          <ScalarProperty Name="Projektbeginn" ColumnName="Projektbeginn" />
+          <ScalarProperty Name="MailsJSON" ColumnName="MailsJSON" />
+          <ScalarProperty Name="BestellungenJSON" ColumnName="BestellungenJSON" />
+          <ScalarProperty Name="OrdnersturkturJSON" ColumnName="OrdnersturkturJSON" />
+          <ScalarProperty Name="Projektname" ColumnName="Projektname" />
+          <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Adressen">
+      <EntityTypeMapping TypeName="PrintumProjekteModel.Adressen">
+        <MappingFragment StoreEntitySet="Adressen">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Categories" ColumnName="Categories" />
+          <ScalarProperty Name="businessHomePage" ColumnName="businessHomePage" />
+          <ScalarProperty Name="FileAs" ColumnName="FileAs" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="Matchcode" ColumnName="Matchcode" />
+          <ScalarProperty Name="PLZundORT" ColumnName="PLZundORT" />
+          <ScalarProperty Name="Telefon1" ColumnName="Telefon1" />
+          <ScalarProperty Name="Email2Adresse" ColumnName="Email2Adresse" />
+          <ScalarProperty Name="Email1Adresse" ColumnName="Email1Adresse" />
+          <ScalarProperty Name="Firmenname" ColumnName="Firmenname" />
+          <ScalarProperty Name="ZuHaendenVon" ColumnName="ZuHaendenVon" />
+          <ScalarProperty Name="Land" ColumnName="Land" />
+          <ScalarProperty Name="Ort" ColumnName="Ort" />
+          <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+          <ScalarProperty Name="Strasse" ColumnName="Strasse" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AdressID" ColumnName="AdressID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bestellungen">
+      <EntityTypeMapping TypeName="PrintumProjekteModel.Bestellungen">
+        <MappingFragment StoreEntitySet="Bestellungen">
+          <ScalarProperty Name="WA" ColumnName="WA" />
+          <ScalarProperty Name="AB" ColumnName="AB" />
+          <ScalarProperty Name="EmailAdresse" ColumnName="EmailAdresse" />
+          <ScalarProperty Name="AdressID" ColumnName="AdressID" />
+          <ScalarProperty Name="istAbgeschickt" ColumnName="istAbgeschickt" />
+          <ScalarProperty Name="PDFpfad" ColumnName="PDFpfad" />
+          <ScalarProperty Name="geaendert" ColumnName="geaendert" />
+          <ScalarProperty Name="GeaendertVon" ColumnName="GeaendertVon" />
+          <ScalarProperty Name="ErstelltVon" ColumnName="ErstelltVon" />
+          <ScalarProperty Name="Datum" ColumnName="Datum" />
+          <ScalarProperty Name="Vorlage" ColumnName="Vorlage" />
+          <ScalarProperty Name="Speicherort" ColumnName="Speicherort" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+          <ScalarProperty Name="BestellungIDText" ColumnName="BestellungIDText" />
+          <ScalarProperty Name="Bestellung_ID" ColumnName="Bestellung_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BestellungPositionen">
+      <EntityTypeMapping TypeName="PrintumProjekteModel.BestellungPositionen">
+        <MappingFragment StoreEntitySet="BestellungPositionen">
+          <ScalarProperty Name="WEingaenger" ColumnName="WEingaenger" />
+          <ScalarProperty Name="WE_datum" ColumnName="WE_datum" />
+          <ScalarProperty Name="ABestaetiger" ColumnName="ABestaetiger" />
+          <ScalarProperty Name="AB_datum" ColumnName="AB_datum" />
+          <ScalarProperty Name="Bestelldatum" ColumnName="Bestelldatum" />
+          <ScalarProperty Name="Besteller" ColumnName="Besteller" />
+          <ScalarProperty Name="Gesammtpreis" ColumnName="Gesammtpreis" />
+          <ScalarProperty Name="Einzelpreis" ColumnName="Einzelpreis" />
+          <ScalarProperty Name="Liefertermin" ColumnName="Liefertermin" />
+          <ScalarProperty Name="Artikelbezeichnung" ColumnName="Artikelbezeichnung" />
+          <ScalarProperty Name="Stueck" ColumnName="Stueck" />
+          <ScalarProperty Name="Pos" ColumnName="Pos" />
+          <ScalarProperty Name="BestellnungIDTest" ColumnName="BestellnungIDTest" />
+          <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+          <ScalarProperty Name="BestellPos_ID" ColumnName="BestellPos_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

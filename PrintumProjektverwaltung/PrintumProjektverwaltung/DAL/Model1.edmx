@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PrintumProjekteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adressen">
+          <Key>
+            <PropertyRef Name="AdressID" />
+          </Key>
+          <Property Name="AdressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Strasse" Type="nvarchar(max)" />
+          <Property Name="PLZ" Type="nvarchar(max)" />
+          <Property Name="Ort" Type="nvarchar(max)" />
+          <Property Name="Land" Type="nvarchar(max)" />
+          <Property Name="ZuHaendenVon" Type="nvarchar(max)" />
+          <Property Name="Firmenname" Type="nvarchar(max)" />
+          <Property Name="Email1Adresse" Type="nvarchar(max)" />
+          <Property Name="Email2Adresse" Type="nvarchar(max)" />
+          <Property Name="Telefon1" Type="nvarchar(max)" />
+          <Property Name="PLZundORT" Type="nvarchar(max)" />
+          <Property Name="Matchcode" Type="nvarchar(max)" />
+          <Property Name="JobTitle" Type="nvarchar(max)" />
+          <Property Name="FileAs" Type="nvarchar(max)" />
+          <Property Name="businessHomePage" Type="nvarchar(max)" />
+          <Property Name="Categories" Type="nvarchar(max)" />
+          <Property Name="ID" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Bestellungen">
+          <Key>
+            <PropertyRef Name="Bestellung_ID" />
+          </Key>
+          <Property Name="Bestellung_ID" Type="int" Nullable="false" />
+          <Property Name="BestellungIDText" Type="nvarchar(max)" />
+          <Property Name="Projektnummer" Type="int" />
+          <Property Name="Adresse" Type="nvarchar(max)" />
+          <Property Name="Speicherort" Type="nvarchar(max)" />
+          <Property Name="Vorlage" Type="nvarchar(max)" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="ErstelltVon" Type="nvarchar" MaxLength="50" />
+          <Property Name="GeaendertVon" Type="nvarchar" MaxLength="50" />
+          <Property Name="geaendert" Type="datetime" />
+          <Property Name="PDFpfad" Type="nvarchar(max)" />
+          <Property Name="istAbgeschickt" Type="bit" />
+          <Property Name="AdressID" Type="nvarchar(max)" />
+          <Property Name="EmailAdresse" Type="nvarchar(max)" />
+          <Property Name="AB" Type="bit" />
+          <Property Name="WA" Type="bit" />
+        </EntityType>
+        <EntityType Name="BestellungPositionen">
+          <Key>
+            <PropertyRef Name="BestellPos_ID" />
+          </Key>
+          <Property Name="BestellPos_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Projektnummer" Type="int" />
+          <Property Name="BestellnungIDTest" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Pos" Type="int" />
+          <Property Name="Stueck" Type="int" />
+          <Property Name="Artikelbezeichnung" Type="nvarchar(max)" />
+          <Property Name="Liefertermin" Type="datetime" />
+          <Property Name="Einzelpreis" Type="float" />
+          <Property Name="Gesammtpreis" Type="float" />
+          <Property Name="Besteller" Type="nvarchar(max)" />
+          <Property Name="Bestelldatum" Type="datetime" />
+          <Property Name="AB_datum" Type="datetime" />
+          <Property Name="ABestaetiger" Type="nvarchar(max)" />
+          <Property Name="WE_datum" Type="datetime" />
+          <Property Name="WEingaenger" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Dateien">
+          <Key>
+            <PropertyRef Name="Datei_ID" />
+          </Key>
+          <Property Name="Datei_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Pfad" Type="nvarchar(max)" />
+          <Property Name="Typ" Type="nvarchar(max)" />
+          <Property Name="Schlagworte" Type="nvarchar(max)" />
+          <Property Name="erstellt" Type="datetime" />
+          <Property Name="geaendert" Type="datetime" />
+          <Property Name="erstelltVon" Type="nvarchar(max)" />
+          <Property Name="geaendertVon" Type="nvarchar(max)" />
+          <Property Name="Projektnummer" Type="int" />
+        </EntityType>
+        <EntityType Name="Mails">
+          <Key>
+            <PropertyRef Name="Mail_ID" />
+          </Key>
+          <Property Name="Mail_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Projektnummer" Type="int" />
+          <Property Name="von" Type="nvarchar(max)" />
+          <Property Name="an" Type="nvarchar(max)" />
+          <Property Name="Betreff" Type="nvarchar(max)" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="AnhangJSON" Type="nvarchar(max)" />
+          <Property Name="Speicherort" Type="nvarchar(max)" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="Schlagworte" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Ordner">
+          <Key>
+            <PropertyRef Name="Ordner_ID" />
+          </Key>
+          <Property Name="Ordner_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Projektnummer" Type="int" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Pfad" Type="nvarchar(max)" />
+          <Property Name="Unterordner" Type="nvarchar(max)" />
+          <Property Name="Root" Type="nvarchar(max)" />
+          <Property Name="hatDateien" Type="bit" />
+        </EntityType>
+        <EntityType Name="Personen">
+          <Key>
+            <PropertyRef Name="Person_ID" />
+          </Key>
+          <Property Name="Person_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vorname" Type="nvarchar(max)" />
+          <Property Name="Nachname" Type="nvarchar(max)" />
+          <Property Name="Anmeldename" Type="nvarchar(max)" />
+          <Property Name="Rechte" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Projekte">
+          <Key>
+            <PropertyRef Name="Projektnummer" />
+          </Key>
+          <Property Name="Projektnummer" Type="int" Nullable="false" />
+          <Property Name="Projektname" Type="nvarchar(max)" />
+          <Property Name="OrdnersturkturJSON" Type="nvarchar(max)" />
+          <Property Name="BestellungenJSON" Type="nvarchar(max)" />
+          <Property Name="MailsJSON" Type="nvarchar(max)" />
+          <Property Name="Projektbeginn" Type="datetime" />
+          <Property Name="Produktionsbeginn" Type="datetime" />
+          <Property Name="Inbetriebname" Type="datetime" />
+          <Property Name="aktiv" Type="bit" Nullable="false" />
+          <Property Name="RootOrdner" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="PrintumProjekteModelStoreContainer">
+          <EntitySet Name="Adressen" EntityType="Self.Adressen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bestellungen" EntityType="Self.Bestellungen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BestellungPositionen" EntityType="Self.BestellungPositionen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dateien" EntityType="Self.Dateien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mails" EntityType="Self.Mails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ordner" EntityType="Self.Ordner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personen" EntityType="Self.Personen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projekte" EntityType="Self.Projekte" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrintumProjekteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PrintumProjekteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dateien" EntityType="PrintumProjekteModel.Dateien" />
+          <EntitySet Name="Mails" EntityType="PrintumProjekteModel.Mails" />
+          <EntitySet Name="Ordner" EntityType="PrintumProjekteModel.Ordner" />
+          <EntitySet Name="Personen" EntityType="PrintumProjekteModel.Personen" />
+          <EntitySet Name="Projekte" EntityType="PrintumProjekteModel.Projekte" />
+          <EntitySet Name="Adressen" EntityType="PrintumProjekteModel.Adressen" />
+          <EntitySet Name="Bestellungen" EntityType="PrintumProjekteModel.Bestellungen" />
+          <EntitySet Name="BestellungPositionen" EntityType="PrintumProjekteModel.BestellungPositionen" />
+        </EntityContainer>
+        <EntityType Name="Dateien">
+          <Key>
+            <PropertyRef Name="Datei_ID" />
+          </Key>
+          <Property Name="Datei_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pfad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Typ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Schlagworte" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="erstellt" Type="DateTime" Precision="3" />
+          <Property Name="geaendert" Type="DateTime" Precision="3" />
+          <Property Name="erstelltVon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="geaendertVon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Projektnummer" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Mails">
+          <Key>
+            <PropertyRef Name="Mail_ID" />
+          </Key>
+          <Property Name="Mail_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Projektnummer" Type="Int32" />
+          <Property Name="von" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="an" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Betreff" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnhangJSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Speicherort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="Schlagworte" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Ordner">
+          <Key>
+            <PropertyRef Name="Ordner_ID" />
+          </Key>
+          <Property Name="Ordner_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Projektnummer" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pfad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Unterordner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Root" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hatDateien" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Personen">
+          <Key>
+            <PropertyRef Name="Person_ID" />
+          </Key>
+          <Property Name="Person_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vorname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nachname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Anmeldename" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Rechte" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Projekte">
+          <Key>
+            <PropertyRef Name="Projektnummer" />
+          </Key>
+          <Property Name="Projektnummer" Type="Int32" Nullable="false" />
+          <Property Name="Projektname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrdnersturkturJSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BestellungenJSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MailsJSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Projektbeginn" Type="DateTime" Precision="3" />
+          <Property Name="Produktionsbeginn" Type="DateTime" Precision="3" />
+          <Property Name="Inbetriebname" Type="DateTime" Precision="3" />
+          <Property Name="aktiv" Type="Boolean" Nullable="false" />
+          <Property Name="RootOrdner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Adressen">
+          <Key>
+            <PropertyRef Name="AdressID" />
+          </Key>
+          <Property Name="AdressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Strasse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PLZ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Land" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ZuHaendenVon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Firmenname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email1Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email2Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PLZundORT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Matchcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileAs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="businessHomePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Categories" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Bestellungen">
+          <Key>
+            <PropertyRef Name="Bestellung_ID" />
+          </Key>
+          <Property Name="Bestellung_ID" Type="Int32" Nullable="false" />
+          <Property Name="BestellungIDText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Projektnummer" Type="Int32" />
+          <Property Name="Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Speicherort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vorlage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="ErstelltVon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GeaendertVon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="geaendert" Type="DateTime" Precision="3" />
+          <Property Name="PDFpfad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="istAbgeschickt" Type="Boolean" />
+          <Property Name="AdressID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAdresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AB" Type="Boolean" />
+          <Property Name="WA" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="BestellungPositionen">
+          <Key>
+            <PropertyRef Name="BestellPos_ID" />
+          </Key>
+          <Property Name="BestellPos_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Projektnummer" Type="Int32" />
+          <Property Name="BestellnungIDTest" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pos" Type="Int32" />
+          <Property Name="Stueck" Type="Int32" />
+          <Property Name="Artikelbezeichnung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Liefertermin" Type="DateTime" Precision="3" />
+          <Property Name="Einzelpreis" Type="Double" />
+          <Property Name="Gesammtpreis" Type="Double" />
+          <Property Name="Besteller" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Bestelldatum" Type="DateTime" Precision="3" />
+          <Property Name="AB_datum" Type="DateTime" Precision="3" />
+          <Property Name="ABestaetiger" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WE_datum" Type="DateTime" Precision="3" />
+          <Property Name="WEingaenger" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PrintumProjekteModelStoreContainer" CdmEntityContainer="PrintumProjekteEntities">
+          <EntitySetMapping Name="Dateien">
+            <EntityTypeMapping TypeName="PrintumProjekteModel.Dateien">
+              <MappingFragment StoreEntitySet="Dateien">
+                <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+                <ScalarProperty Name="geaendertVon" ColumnName="geaendertVon" />
+                <ScalarProperty Name="erstelltVon" ColumnName="erstelltVon" />
+                <ScalarProperty Name="geaendert" ColumnName="geaendert" />
+                <ScalarProperty Name="erstellt" ColumnName="erstellt" />
+                <ScalarProperty Name="Schlagworte" ColumnName="Schlagworte" />
+                <ScalarProperty Name="Typ" ColumnName="Typ" />
+                <ScalarProperty Name="Pfad" ColumnName="Pfad" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Datei_ID" ColumnName="Datei_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mails">
+            <EntityTypeMapping TypeName="PrintumProjekteModel.Mails">
+              <MappingFragment StoreEntitySet="Mails">
+                <ScalarProperty Name="Schlagworte" ColumnName="Schlagworte" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Speicherort" ColumnName="Speicherort" />
+                <ScalarProperty Name="AnhangJSON" ColumnName="AnhangJSON" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Betreff" ColumnName="Betreff" />
+                <ScalarProperty Name="an" ColumnName="an" />
+                <ScalarProperty Name="von" ColumnName="von" />
+                <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+                <ScalarProperty Name="Mail_ID" ColumnName="Mail_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ordner">
+            <EntityTypeMapping TypeName="PrintumProjekteModel.Ordner">
+              <MappingFragment StoreEntitySet="Ordner">
+                <ScalarProperty Name="hatDateien" ColumnName="hatDateien" />
+                <ScalarProperty Name="Root" ColumnName="Root" />
+                <ScalarProperty Name="Unterordner" ColumnName="Unterordner" />
+                <ScalarProperty Name="Pfad" ColumnName="Pfad" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+                <ScalarProperty Name="Ordner_ID" ColumnName="Ordner_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personen">
+            <EntityTypeMapping TypeName="PrintumProjekteModel.Personen">
+              <MappingFragment StoreEntitySet="Personen">
+                <ScalarProperty Name="Rechte" ColumnName="Rechte" />
+                <ScalarProperty Name="Anmeldename" ColumnName="Anmeldename" />
+                <ScalarProperty Name="Nachname" ColumnName="Nachname" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projekte">
+            <EntityTypeMapping TypeName="PrintumProjekteModel.Projekte">
+              <MappingFragment StoreEntitySet="Projekte">
+                <ScalarProperty Name="RootOrdner" ColumnName="RootOrdner" />
+                <ScalarProperty Name="aktiv" ColumnName="aktiv" />
+                <ScalarProperty Name="Inbetriebname" ColumnName="Inbetriebname" />
+                <ScalarProperty Name="Produktionsbeginn" ColumnName="Produktionsbeginn" />
+                <ScalarProperty Name="Projektbeginn" ColumnName="Projektbeginn" />
+                <ScalarProperty Name="MailsJSON" ColumnName="MailsJSON" />
+                <ScalarProperty Name="BestellungenJSON" ColumnName="BestellungenJSON" />
+                <ScalarProperty Name="OrdnersturkturJSON" ColumnName="OrdnersturkturJSON" />
+                <ScalarProperty Name="Projektname" ColumnName="Projektname" />
+                <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adressen">
+            <EntityTypeMapping TypeName="PrintumProjekteModel.Adressen">
+              <MappingFragment StoreEntitySet="Adressen">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Categories" ColumnName="Categories" />
+                <ScalarProperty Name="businessHomePage" ColumnName="businessHomePage" />
+                <ScalarProperty Name="FileAs" ColumnName="FileAs" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Matchcode" ColumnName="Matchcode" />
+                <ScalarProperty Name="PLZundORT" ColumnName="PLZundORT" />
+                <ScalarProperty Name="Telefon1" ColumnName="Telefon1" />
+                <ScalarProperty Name="Email2Adresse" ColumnName="Email2Adresse" />
+                <ScalarProperty Name="Email1Adresse" ColumnName="Email1Adresse" />
+                <ScalarProperty Name="Firmenname" ColumnName="Firmenname" />
+                <ScalarProperty Name="ZuHaendenVon" ColumnName="ZuHaendenVon" />
+                <ScalarProperty Name="Land" ColumnName="Land" />
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="Strasse" ColumnName="Strasse" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AdressID" ColumnName="AdressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bestellungen">
+            <EntityTypeMapping TypeName="PrintumProjekteModel.Bestellungen">
+              <MappingFragment StoreEntitySet="Bestellungen">
+                <ScalarProperty Name="WA" ColumnName="WA" />
+                <ScalarProperty Name="AB" ColumnName="AB" />
+                <ScalarProperty Name="EmailAdresse" ColumnName="EmailAdresse" />
+                <ScalarProperty Name="AdressID" ColumnName="AdressID" />
+                <ScalarProperty Name="istAbgeschickt" ColumnName="istAbgeschickt" />
+                <ScalarProperty Name="PDFpfad" ColumnName="PDFpfad" />
+                <ScalarProperty Name="geaendert" ColumnName="geaendert" />
+                <ScalarProperty Name="GeaendertVon" ColumnName="GeaendertVon" />
+                <ScalarProperty Name="ErstelltVon" ColumnName="ErstelltVon" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Vorlage" ColumnName="Vorlage" />
+                <ScalarProperty Name="Speicherort" ColumnName="Speicherort" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+                <ScalarProperty Name="BestellungIDText" ColumnName="BestellungIDText" />
+                <ScalarProperty Name="Bestellung_ID" ColumnName="Bestellung_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BestellungPositionen">
+            <EntityTypeMapping TypeName="PrintumProjekteModel.BestellungPositionen">
+              <MappingFragment StoreEntitySet="BestellungPositionen">
+                <ScalarProperty Name="WEingaenger" ColumnName="WEingaenger" />
+                <ScalarProperty Name="WE_datum" ColumnName="WE_datum" />
+                <ScalarProperty Name="ABestaetiger" ColumnName="ABestaetiger" />
+                <ScalarProperty Name="AB_datum" ColumnName="AB_datum" />
+                <ScalarProperty Name="Bestelldatum" ColumnName="Bestelldatum" />
+                <ScalarProperty Name="Besteller" ColumnName="Besteller" />
+                <ScalarProperty Name="Gesammtpreis" ColumnName="Gesammtpreis" />
+                <ScalarProperty Name="Einzelpreis" ColumnName="Einzelpreis" />
+                <ScalarProperty Name="Liefertermin" ColumnName="Liefertermin" />
+                <ScalarProperty Name="Artikelbezeichnung" ColumnName="Artikelbezeichnung" />
+                <ScalarProperty Name="Stueck" ColumnName="Stueck" />
+                <ScalarProperty Name="Pos" ColumnName="Pos" />
+                <ScalarProperty Name="BestellnungIDTest" ColumnName="BestellnungIDTest" />
+                <ScalarProperty Name="Projektnummer" ColumnName="Projektnummer" />
+                <ScalarProperty Name="BestellPos_ID" ColumnName="BestellPos_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

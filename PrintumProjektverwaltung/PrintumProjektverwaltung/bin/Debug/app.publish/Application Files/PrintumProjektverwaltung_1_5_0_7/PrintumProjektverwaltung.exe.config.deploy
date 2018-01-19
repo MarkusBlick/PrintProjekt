@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="PrintumProjektverwaltung.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+    </sectionGroup>
+    <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="PrintumProjektverwaltung.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+    </sectionGroup>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+  </configSections>
+
+  <log4net debug="true">
+    <appender name="LogFileAppender" type="log4net.Appender.FileAppender">
+      <file type="log4net.Util.PatternString" value="C:\Users\Public\PrintumProjekte\Logs\Log_%env{USERNAME}_%date{yyyyMMdd}.log" />
+      <appendToFile value="true" />
+      <bufferSize value="20" />
+      <LockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <header type="log4net.Util.PatternString" value="[Log Starts]%newline" />
+        <footer type="log4net.Util.PatternString" value="[Log Ends]%newline%newline" />
+        <conversionPattern value="%date [%username] [%M %C]- %message%newline" />
+      </layout>
+    </appender>
+    <appender name="SmtpAppender" type="log4net.Appender.SmtpAppender">
+      <to value="markus.blick@gmx.de" />
+      <from value="m.blick@posteo.com" />
+      <subject value="test logging message" />
+      <smtpHost value="posteo.de" />
+      <authentication value="Basic" />
+      <port value="587" />
+      <bufferSize value="1" />
+      <username value="m.blick@posteo.de" />
+      <password value="Philipper4.4" />
+      <EnableSsl value="true"/>
+      <lossy value="true" />
+      <evaluator type="log4net.Core.LevelEvaluator">
+        <threshold value="WARN"/>
+      </evaluator>
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%newline%date [%thread] %-5level %logger [%property{NDC}] - %message%newline%newline%newline" />
+      </layout>
+    </appender>
+
+    <!-- Specify the level for some specific categories -->
+    <logger name="MyApplicationDebugLog">
+      <level value="DEBUG" />
+      <appender-ref ref="LogFileAppender" />
+    </logger>
+  <logger name="EmailLogger">
+    <level value="DEBUG" />
+    <appender-ref ref="SmtpAppender" />
+</logger>
+  </log4net>
+
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
+      <parameters>
+        <parameter value="mssqllocaldb" />
+      </parameters>
+    </defaultConnectionFactory>
+    <providers>
+      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
+    </providers>
+  </entityFramework>
+  <connectionStrings>
+    <add name="PrintumProjektverwaltung.Properties.Settings.PrintumProjekteConnectionString" connectionString="Data Source=PRINTUMSERVER\EXPRESS2008ERP;Initial Catalog=PrintumDB;Persist Security Info=True;User ID=sa;Password=Inhouse2017;MultipleActiveResultSets=True;Application Name=EntityFramework" providerName="System.Data.SqlClient" />
+    <add name="PrintumProjekteEntities" connectionString="metadata=res://*/DAL.Model1.csdl|res://*/DAL.Model1.ssdl|res://*/DAL.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=PRINTUMSERVER\EXPRESS2008ERP;initial catalog=PrintumDB;persist security info=True;user id=sa;password=Inhouse2017;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+  <applicationSettings>
+    <PrintumProjektverwaltung.Properties.Settings>
+      <setting name="templatePath" serializeAs="String">
+        <value />
+      </setting>
+    </PrintumProjektverwaltung.Properties.Settings>
+  </applicationSettings>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+  </startup>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-10.0.0.0" newVersion="10.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.OData.Client" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.13.0.0" newVersion="6.13.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.OData.Core" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.13.0.0" newVersion="6.13.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <userSettings>
+    <PrintumProjektverwaltung.Properties.Settings>
+      <setting name="Kennwort_Appregistartion" serializeAs="String">
+        <value>GrqAbpzk7iETAu2avFjGDgR</value>
+      </setting>
+      <setting name="AnwendungsID" serializeAs="String">
+        <value>94b49e81-a4e2-4e41-b224-9999bff7d3ed</value>
+      </setting>
+      <setting name="AnwendungsName" serializeAs="String">
+        <value>PrintumProjektverwaltung</value>
+      </setting>
+    </PrintumProjektverwaltung.Properties.Settings>
+  </userSettings>
+</configuration>
